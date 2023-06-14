@@ -1,4 +1,4 @@
-import { fakeData } from "./fakeData";
+import { fakeData } from "../fakeData";
 import { Request, Response } from "express";
 
 const deleteUser = (req: Request, res: Response) => {
@@ -19,4 +19,4 @@ const deleteUser = (req: Request, res: Response) => {
   }
 };
 
-export default deleteUser;
+export { deleteUser };

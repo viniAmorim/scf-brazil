@@ -1,4 +1,4 @@
-import { fakeData } from "./fakeData";
+import { fakeData } from "../fakeData";
 import { v4 as uuidv4 } from "uuid";
 import { Request, Response } from "express";
 
@@ -22,4 +22,4 @@ const addUser = (req: Request, res: Response) => {
   }
 };
 
-export default addUser;
+export { addUser };

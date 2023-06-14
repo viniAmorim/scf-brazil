@@ -1,4 +1,4 @@
-import { fakeData } from "./fakeData";
+import { fakeData } from "../fakeData";
 import { Request, Response } from "express";
 
 const getUserReadCount = (req: Request, res: Response) => {
@@ -23,4 +23,4 @@ const getUserReadCount = (req: Request, res: Response) => {
   return res.json(`User ${name} was read ${count} time(s).`);
 };
 
-export default getUserReadCount;
+export { getUserReadCount };

@@ -1,10 +1,16 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
-import { getUser, getUsers } from "./teste1";
-import teste2 from "./teste2";
-import teste3 from "./teste3";
-import teste4 from "./teste4";
-import teste5 from "./teste5";
+
+import { 
+  getUser, 
+  getUsers, 
+  addUser, 
+  deleteUser, 
+  updateUser, 
+  getUserReadCount 
+} from "./Tests";
+
+import userPermissions from "./auth";
 
 const app = express();
 const port = 3000;
@@ -30,10 +36,10 @@ app.get("/", function (req: Request, res: Response) {
 
 app.get("/user", getUser);
 app.get("/users", getUsers);
-app.post("/users", teste2);
-app.delete("/users", teste3);
-app.put("/users", teste4);
-app.get("/users/time-access", teste5);
+app.post("/users", addUser);
+app.delete("/users", deleteUser);
+app.put("/users", userPermissions, updateUser);
+app.get("/users/time-access", userPermissions, getUserReadCount);
 
 app.listen(port, function () {
   console.log("Express server listening on port " + port);

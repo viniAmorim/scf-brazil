@@ -1,4 +1,4 @@
-import { fakeData } from "./fakeData";
+import { fakeData } from "../fakeData";
 import { Request, Response } from "express";
 
 const updateUser = (req: Request, res: Response) => {
@@ -21,4 +21,4 @@ const updateUser = (req: Request, res: Response) => {
   }
 };
 
-export default updateUser;
+export { updateUser };

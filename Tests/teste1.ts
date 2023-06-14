@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { fakeData } from "./fakeData";
+import { fakeData } from "../fakeData";
 
 interface User {
   name: string;
