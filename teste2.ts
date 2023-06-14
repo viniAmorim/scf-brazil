@@ -1,17 +1,25 @@
-var data =  require("./fakeData");
+import { fakeData } from "./fakeData";
+import { v4 as uuidv4 } from "uuid";
+import { Request, Response } from "express";
 
-module.exports = function(req, res){
+const addUser = (req: Request, res: Response) => {
+  const { name, job } = req.body;
+
+  if (!name || !job) {
+    return res.status(400).json({ error: "Name and job are required" });
+  }
+
+  let id = uuidv4();
+
+  const newUser = { id, name, job };
   
-    var name =  req.body.name;
-    var jov =  req.body.job;
+  try {
+    fakeData.push(newUser);
     
-    var newUser = {
-        name: name,
-        job: job,
-    }
-
-    data.push(newUser)
-    
-    res.send(newUser);
-
+    return res.status(201).json(newUser);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", erro: error });
+  }
 };
+
+export default addUser;
