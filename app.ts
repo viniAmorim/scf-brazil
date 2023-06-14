@@ -4,7 +4,7 @@ import { getUser, getUsers } from "./teste1";
 import teste2 from "./teste2";
 import teste3 from "./teste3";
 import teste4 from "./teste4";
-//import teste5 from "./teste5";
+import teste5 from "./teste5";
 
 const app = express();
 const port = 3000;
@@ -33,6 +33,7 @@ app.get("/users", getUsers);
 app.post("/users", teste2);
 app.delete("/users", teste3);
 app.put("/users", teste4);
+app.get("/users/time-access", teste5);
 
 app.listen(port, function () {
   console.log("Express server listening on port " + port);

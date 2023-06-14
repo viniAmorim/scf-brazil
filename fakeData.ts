@@ -14,6 +14,11 @@ const fakeData = [
     name: "Maria",
     job: "Designer",
   },
+  {
+    id: "4",
+    name: "Luiz",
+    job: "CTO",
+  },
 ];
 
 export { fakeData };
