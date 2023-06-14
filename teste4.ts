@@ -1,13 +1,24 @@
-var data =  require("./fakeData");
+import { fakeData } from "./fakeData";
+import { Request, Response } from "express";
 
-module.exports =  function(req, res) {
-  
-    var id =  req.query.id;
+const updateUser = (req: Request, res: Response) => {
+  const { id } = req.query;
+  const { name, job } = req.body;
 
-    const reg = data.find(d => id == id);
-    reg.name = req.body.name;
-    reg.job = req.body.job;
+  try {
+    const user = fakeData.find((d) => d.id === id);
 
-    res.send(reg);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    
+    user.name = !String(name) ? user.name : name;
+    user.job = !String(job) ? user.job : job;
 
+    return res.json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", erro: error });
+  }
 };
+
+export default updateUser;
