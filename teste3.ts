@@ -1,15 +1,22 @@
-var data =  require("./fakeData");
+import { fakeData } from "./fakeData";
+import { Request, Response } from "express";
 
-module.exports = function(req, res) {
-  
-    var name =  req.query.name;
+const deleteUser = (req: Request, res: Response) => {
+  const { name } = req.query;
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            data[i] = null;
-        }
+  try {
+    const index = fakeData.findIndex((user) => user && user.name === name);
+
+    if (index === -1) {
+      return res.status(404).json({ error: "User not found" });
     }
+  
+    fakeData.splice(index, 1);
 
-    res.send("success");
-
+    return res.status(200).json({ success: true });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", erro: error });
+  }
 };
+
+export default deleteUser;

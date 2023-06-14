@@ -11,7 +11,7 @@ const fakeData = [
   },
   {
     id: "3",
-    name: "Maria Aparecida",
+    name: "Maria",
     job: "Designer",
   },
 ];

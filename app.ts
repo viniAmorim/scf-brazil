@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { getUser, getUsers } from "./teste1";
 import teste2 from "./teste2";
-//import teste3 from "./teste3";
+import teste3 from "./teste3";
 //import teste4 from "./teste4";
 //import teste5 from "./teste5";
 
@@ -31,6 +31,7 @@ app.get("/", function (req: Request, res: Response) {
 app.get("/user", getUser);
 app.get("/users", getUsers);
 app.post("/users", teste2);
+app.delete("/users", teste3);
 
 app.listen(port, function () {
   console.log("Express server listening on port " + port);
